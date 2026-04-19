@@ -1,4 +1,4 @@
-package com.main.stratergypattern;
+package com.main.patterns.stratergypattern;
 
 public class main {
     public static void main(String[] args) {

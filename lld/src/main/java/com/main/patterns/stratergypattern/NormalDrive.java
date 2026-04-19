@@ -1,4 +1,4 @@
-package com.main.stratergypattern;
+package com.main.patterns.stratergypattern;
 
 public class NormalDrive implements Drive {
     public void drive() {

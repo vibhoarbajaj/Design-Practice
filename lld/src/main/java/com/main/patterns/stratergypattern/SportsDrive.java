@@ -1,4 +1,4 @@
-package com.main.stratergypattern;
+package com.main.patterns.stratergypattern;
 
 public class SportsDrive implements Drive {
     public void drive() {
