@@ -1,0 +1,5 @@
+-- add n features on top of a base object
+-- stacking features  for product enhancement
+-- pizza  + cheese  + mushroom + etc
+-- without decorator pattern we will have large number of combination of features with the base class
+-- this pattern helps in adding new functionality without change to the original structure dynamically
