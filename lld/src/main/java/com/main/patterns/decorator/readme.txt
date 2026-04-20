@@ -3,3 +3,4 @@
 -- pizza  + cheese  + mushroom + etc
 -- without decorator pattern we will have large number of combination of features with the base class
 -- this pattern helps in adding new functionality without change to the original structure dynamically
+-- base class , feature class is also impl of base class and has a base class in it to extend the functionality
