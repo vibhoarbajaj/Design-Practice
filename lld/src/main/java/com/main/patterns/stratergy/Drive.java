@@ -1,4 +1,4 @@
-package com.main.patterns.stratergypattern;
+package com.main.patterns.stratergy;
 
 public interface Drive {
      void drive();
