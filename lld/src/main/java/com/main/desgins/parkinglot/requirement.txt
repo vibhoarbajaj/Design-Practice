@@ -1,0 +1,19 @@
+-- vehicle arrive at the entry gate (we can have a multiple entry gates)
+-- based on the vehicle type parking spot is going to be looked for
+  : interviewer can ask for any particular parking strategy(like fill from top level to bottom) or random allotment
+  : interviewer can say we can have multiple levels of parking lot
+  : concurrency must be handled properly ex- same parking spot not reserved for two vehicles
+                                           - for 1 vehicle lets say 2 wheeler we cannot block the complete lot
+-- ticket is generated for the parking spot if available
+    : ticket can have parking level no , parking spot no , vehicle no and entry time
+-- at the exit gate the cost can be hourly basis or fixed price
+-- payment is made against the ticket and parking spot is free again
+
+
+Objects will be
+1. Vehicle
+2. Ticket
+3. Gates(entry and exit)
+4. ParkingSpot
+5. ParkingLevels
+6. Payment
