@@ -16,3 +16,6 @@ FACTORY METHOD PATTERN
 circleShape returns a circle shape , by this we are abstracting the construction logic for creation of object
 -- the main factory method will have the object selection but not the creation
 -- still violates the open closed principle
+
+ABSTRACT FACTORY METHOD (SIMPLE)
+-- it is a factory of factories where each subfactory is a simple factory
