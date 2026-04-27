@@ -5,15 +5,15 @@ import lombok.Data;
 @Data
 public class ParkingSpot {
      String parkingSpotId;
-     boolean parked;
+     boolean isFree= true;
 
      public void releaseSpot(){
-         parked = false;
+         isFree = true;
      }
      public void occupySpot(){
-         parked = true;
+         isFree = false;
      }
      public boolean isSpotFree(){
-         return !parked;
+         return isFree;
      }
 }

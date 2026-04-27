@@ -7,17 +7,29 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public abstract class ParkingSpotManager {
 
-    protected final List<ParkingSpot> Spot;
-    protected final ParkingSpotLookupStrategy spotLookupStratergy;
+    protected final List<ParkingSpot> spots;
+    protected final ParkingSpotLookupStrategy spotLookupStrategy;
     private final ReentrantLock lock = new ReentrantLock(true);
+    // note : we used reentrant lock because its using fifo , can use synchronize but that won't be fifo
 
-    protected ParkingSpotManager(List<ParkingSpot> spot, ParkingSpotLookupStrategy spotLookupStratergy) {
-        this.Spot = spot;
-        this.spotLookupStratergy = spotLookupStratergy;
+    protected ParkingSpotManager(List<ParkingSpot> spots, ParkingSpotLookupStrategy spotLookupStrategy) {
+        this.spots = spots;
+        this.spotLookupStrategy = spotLookupStrategy;
     }
 
     public ParkingSpot park() {
-        return null;
+        lock.lock();
+        try {
+            ParkingSpot parkingSpot = spotLookupStrategy.getParkingSpot(spots);
+            if (parkingSpot == null) {
+                return null;
+            }
+            parkingSpot.occupySpot();
+            return parkingSpot;
+
+        } finally {
+            lock.unlock();
+        }
     }
 
     public void unpark(ParkingSpot spot) {
@@ -32,7 +44,7 @@ public abstract class ParkingSpotManager {
     public boolean canPark() {
         lock.lock();
         try {
-            return Spot.stream().noneMatch(ParkingSpot::isSpotFree);
+            return spots.stream().anyMatch(ParkingSpot::isSpotFree);
         } catch (Exception e) {
             return false;
         }

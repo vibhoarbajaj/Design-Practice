@@ -8,7 +8,7 @@ public class NearestFirstParkingStrategy implements ParkingSpotLookupStrategy {
     @Override
     public ParkingSpot getParkingSpot(List<ParkingSpot> spots) {
         for(ParkingSpot spot : spots){
-            if(!spot.isParked()){
+            if(spot.isSpotFree()){
                 return spot;
             }
         }
