@@ -13,4 +13,7 @@ public class ParkingSpot {
      public void occupySpot(){
          parked = true;
      }
+     public boolean isSpotFree(){
+         return !parked;
+     }
 }
