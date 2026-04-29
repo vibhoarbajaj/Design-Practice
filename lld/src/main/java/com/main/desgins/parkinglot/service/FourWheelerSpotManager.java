@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FourWheelerSpotManager extends ParkingSpotManager {
 
-    protected FourWheelerSpotManager(List<ParkingSpot> spot, ParkingSpotLookupStrategy spotLookupStratergy) {
+    public FourWheelerSpotManager(List<ParkingSpot> spot, ParkingSpotLookupStrategy spotLookupStratergy) {
         super(spot, spotLookupStratergy);
     }
 }
