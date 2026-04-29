@@ -1,0 +1,9 @@
+-- its a simple 2 player game (can be multi player too but that gets complex)
+-- each player has to select o and x for them
+-- turns take place on a 3x3 board
+-- column , row , diagnol all 3 are aligned then player 1 wins
+--  game ends when any player win or no space to be filled
+
+-- classes will be
+Players
+Board / can be of any size take 3x3 for now
