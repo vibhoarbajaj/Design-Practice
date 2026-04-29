@@ -65,6 +65,10 @@ public class BoardManager {
                 j++;
             }
         }
+        if(isWon){
+            return true;
+        }
+        isWon = true;
         i = grid.size() - 1;
         j = grid.size() - 1;
         while (i >= 0 && j >= 0) {
@@ -75,7 +79,7 @@ public class BoardManager {
                 j--;
             }
         }
-        if (isWon) {
+        if(isWon) {
             return true;
         }
         return false;
