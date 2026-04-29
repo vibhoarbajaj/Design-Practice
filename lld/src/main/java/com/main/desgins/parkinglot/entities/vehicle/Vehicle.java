@@ -1,4 +1,4 @@
-package com.main.desgins.parkinglot.entities;
+package com.main.desgins.parkinglot.entities.vehicle;
 
 import lombok.Data;
 

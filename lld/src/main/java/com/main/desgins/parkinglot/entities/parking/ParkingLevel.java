@@ -1,5 +1,6 @@
-package com.main.desgins.parkinglot.entities;
+package com.main.desgins.parkinglot.entities.parking;
 
+import com.main.desgins.parkinglot.entities.vehicle.VehicleType;
 import com.main.desgins.parkinglot.service.ParkingSpotManager;
 import lombok.AllArgsConstructor;
 import lombok.Data;

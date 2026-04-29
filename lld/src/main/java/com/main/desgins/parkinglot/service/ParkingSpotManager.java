@@ -1,6 +1,6 @@
 package com.main.desgins.parkinglot.service;
 
-import com.main.desgins.parkinglot.entities.ParkingSpot;
+import com.main.desgins.parkinglot.entities.parking.ParkingSpot;
 
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;

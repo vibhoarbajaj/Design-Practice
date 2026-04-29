@@ -1,5 +1,8 @@
 package com.main.desgins.parkinglot.entities;
 
+import com.main.desgins.parkinglot.entities.parking.ParkingLevel;
+import com.main.desgins.parkinglot.entities.parking.ParkingSpot;
+import com.main.desgins.parkinglot.entities.vehicle.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

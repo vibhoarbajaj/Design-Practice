@@ -1,5 +1,7 @@
-package com.main.desgins.parkinglot.entities;
+package com.main.desgins.parkinglot.entities.parking;
 
+import com.main.desgins.parkinglot.entities.Ticket;
+import com.main.desgins.parkinglot.entities.vehicle.Vehicle;
 import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -23,7 +25,7 @@ public class ParkingBuilding {
         return null;
     }
 
-    void release(Ticket ticket) {
+   public void release(Ticket ticket) {
         ticket.getParkingLevel().unpark(ticket.getParkingSpot(), ticket.getVehicle().getVehicleType());
     }
 
