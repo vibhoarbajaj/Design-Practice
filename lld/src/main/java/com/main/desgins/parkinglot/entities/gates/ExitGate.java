@@ -5,10 +5,13 @@ import com.main.desgins.parkinglot.entities.Ticket;
 import com.main.desgins.parkinglot.entities.parking.ParkingBuilding;
 import com.main.desgins.parkinglot.service.CostComputation;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
 public class ExitGate {
 
+    @Getter
+    private final int exitGateId;
     private final CostComputation costComputation;
 
     public void exit(ParkingBuilding parkingBuilding, Ticket ticket, Payment payment) {

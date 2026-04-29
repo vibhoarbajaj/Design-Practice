@@ -35,6 +35,8 @@ public class Main {
         ParkingLot parkingLot = getParkingLot(parkingSpotList);
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleNumber("6969");
+        vehicle.setEntryGateNumber(2);
+        vehicle.setExitGateNumber(1);
         vehicle.setVehicleType(VehicleType.FOUR_WHEELER);
 
         Ticket ticket = parkingLot.vehicleArrives(vehicle);
@@ -52,12 +54,21 @@ public class Main {
         ParkingBuilding parkingBuilding = new ParkingBuilding(parkingLevels);
 
 
-        EntranceGate entranceGate = new EntranceGate();
+        EntranceGate entranceGate = new EntranceGate(1);
+        EntranceGate entranceGate2 = new EntranceGate(2);
+        List<EntranceGate> entranceGates = new ArrayList<>();
+        entranceGates.add(entranceGate);
+        entranceGates.add(entranceGate2);
+
         PricingStrategy pricingStrategy = new FixesPricingStrategy();
         CostComputation costComputation = new CostComputation(pricingStrategy);
 
-        ExitGate exitGate = new ExitGate(costComputation);
+        ExitGate exitGate = new ExitGate(1,costComputation);
+        ExitGate exitGate2 = new ExitGate(2,costComputation);
+        List<ExitGate> exitGates = new ArrayList<>();
+        exitGates.add(exitGate);
+        exitGates.add(exitGate2);
 
-        return new ParkingLot(parkingBuilding, entranceGate, exitGate);
+        return new ParkingLot(parkingBuilding, entranceGates, exitGates);
     }
 }

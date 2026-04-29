@@ -6,4 +6,6 @@ import lombok.Data;
 public class Vehicle {
     String vehicleNumber;
     VehicleType vehicleType;
+    int entryGateNumber;
+    int exitGateNumber;
 }
