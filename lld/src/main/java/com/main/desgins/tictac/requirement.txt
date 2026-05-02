@@ -7,3 +7,4 @@
 -- classes will be
 Players
 Board / can be of any size take 3x3 for now
+Playing Piece object or enum (enum when only symbol is needed and object when features are needed like color etc.)
