@@ -1,0 +1,27 @@
+-- a building has multiple elevators and multiple floors
+-- a user can req an elevator externally using up/down buttons at each floor
+-- these up/down direction button is used to choose the best elevator to serve the req
+-- one elevator is chosen , the floor is added in that particular elevator bucket list
+-- a user inside a elevator can also press a button to destination floor
+-- req selected inside the elevator should serve by the same elevator
+-- idle when no req exists and awake when new arrives
+-- up : visit floors in asc order
+-- down : visit floors in desc order
+
+
+
+objects -
+Building
+Floors
+Buttons, internal/external
+Elevator , elevatorManger ,
+elevatorScheduler - maintains the elevatorcontrollers and has elevator selection strategy to choose the best elevator to serve
+externalDispatcher - bridge between external buttons and elevatorManager(orchestrator)
+internalDispatcher - pass request to each elevator manager
+
+
+
+Elevation Selection Strategy
+-- when the external button is pressed we have floor and the direction which user want to go to
+-- when there are more than 1 elevator we need to select the strategy : nearest elevator (nearest to that particular floor should handle it )
+                                                                         least busy elevator(the elevator having least requests should handle it )
