@@ -2,6 +2,8 @@ package com.main.desgins.elevator.models;
 
 import lombok.Data;
 
+import java.util.PriorityQueue;
+
 @Data
 public class Elevator {
     public Floor currentFloor;
@@ -10,4 +12,6 @@ public class Elevator {
 
     public ElevatorDirection direction;
     // add a bucket
+    public PriorityQueue<Elevator> upMinQueue;
+    public PriorityQueue<Elevator> downMaxQueue;
 }
