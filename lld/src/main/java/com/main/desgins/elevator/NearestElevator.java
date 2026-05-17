@@ -35,7 +35,6 @@ public class NearestElevator implements ElevationSelectionStrategy {
             }
         }
 
-
-        return null;
+        return elevatorManager;
     }
 }
