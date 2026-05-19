@@ -1,5 +1,6 @@
-package com.main.desgins.elevator;
+package com.main.desgins.elevator.strategy;
 
+import com.main.desgins.elevator.ElevatorManager;
 import com.main.desgins.elevator.models.ElevatorDirection;
 
 import java.util.List;

@@ -25,3 +25,19 @@ Elevation Selection Strategy
 -- when the external button is pressed we have floor and the direction which user want to go to
 -- when there are more than 1 elevator we need to select the strategy : nearest elevator (nearest to that particular floor should handle it )
                                                                          least busy elevator(the elevator having least requests should handle it )
+
+
+------------
+
+algos for optimal elevator solution
+
+
+1. Scan algorithm
+-- head moves in one direction first,servicing the requests along the way
+-- once it reaches the end , it reverses the direction , so it moves end to end
+
+2. Look algorithm
+-- same as scan , don't go till the end , stop when there is no request (up -> stop at 12 if no req -> req from down -> go to 6 -> in between the req comes from 10 then fullfill it  )
+-- can be impl by 2 pqs min and max (when going down use maxpq) if (up use minpq) we will go to a direction till the pq is not empty
+
+

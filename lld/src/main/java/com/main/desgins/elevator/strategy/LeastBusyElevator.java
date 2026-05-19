@@ -1,10 +1,11 @@
-package com.main.desgins.elevator;
+package com.main.desgins.elevator.strategy;
 
+import com.main.desgins.elevator.ElevatorManager;
 import com.main.desgins.elevator.models.ElevatorDirection;
 
 import java.util.List;
 
-public class LeastBusyElevator implements ElevationSelectionStrategy{
+public class LeastBusyElevator implements ElevationSelectionStrategy {
     @Override
     public ElevatorManager selectElevator(List<ElevatorManager> managers, int requestFloor, ElevatorDirection elevatorDirection) {
 
@@ -12,7 +13,7 @@ public class LeastBusyElevator implements ElevationSelectionStrategy{
         int minLoad = Integer.MAX_VALUE;
 
         for(ElevatorManager elevatorManagers : managers){
-            int load  = elevatorManagers.getElevator().upMinQueue.size() + elevatorManagers.getElevator().downMaxQueue.size();
+            int load  = elevatorManagers.upMinQueue.size() + elevatorManagers.downMaxQueue.size();
             if(load < minLoad){
                 minLoad = load;
                 elevatorManager = elevatorManagers;
