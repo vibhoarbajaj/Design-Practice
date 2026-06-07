@@ -2,6 +2,7 @@ package com.main.desgins.elevator.models;
 
 import lombok.Data;
 
+
 @Data
 public class Elevator {
 
@@ -21,4 +22,42 @@ public class Elevator {
         this.nextStoppage = new Floor(id,-1);
         door = new Door();
     }
+
+    public void moveElevator(int destinationFloor, int floorId){
+        //this is a dump obj , so if a cmd comes , to go to a particular dir/floor , it just moves no matter what its current state is
+        this.nextStoppage= new Floor(floorId,destinationFloor);
+        if(this.currentFloor.getFloorNumber()==nextStoppage.getFloorNumber()){
+            door.openDoor(id);
+            return;
+        }
+        int startFloor=currentFloor.getFloorNumber();
+        if(nextStoppage.getFloorNumber()>currentFloor.getFloorNumber()){
+            direction = ElevatorDirection.UP;
+            for(int i = startFloor+1;i<=nextStoppage.getFloorNumber();i++){
+                try {
+                    Thread.sleep(5);
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setCurrentFloor(new Floor(12,i));
+            }
+        }
+        else{
+            direction = ElevatorDirection.DOWN;
+            for(int i = startFloor-1;i>=nextStoppage.getFloorNumber();i--){
+                try {
+                    Thread.sleep(5);
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setCurrentFloor(new Floor(12,i));
+
+            }
+        }
+        door.openDoor(id);
+    }
+
+
 }
