@@ -18,14 +18,14 @@ public class Elevator {
 
     public Elevator(int id) {
         this.id = id;
-        this.currentFloor = new Floor(id, 0);
-        this.nextStoppage = new Floor(id,-1);
+        this.currentFloor = new Floor(0,null);
+        this.nextStoppage = new Floor(-1,null);
         door = new Door();
     }
 
     public void moveElevator(int destinationFloor, int floorId){
         //this is a dump obj , so if a cmd comes , to go to a particular dir/floor , it just moves no matter what its current state is
-        this.nextStoppage= new Floor(floorId,destinationFloor);
+        this.nextStoppage= new Floor(destinationFloor,null);
         if(this.currentFloor.getFloorNumber()==nextStoppage.getFloorNumber()){
             door.openDoor(id);
             return;
@@ -40,7 +40,7 @@ public class Elevator {
                 catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                setCurrentFloor(new Floor(12,i));
+                setCurrentFloor(new Floor(i,null));
             }
         }
         else{
@@ -52,7 +52,7 @@ public class Elevator {
                 catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                setCurrentFloor(new Floor(12,i));
+                setCurrentFloor(new Floor(i,null));
 
             }
         }

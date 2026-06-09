@@ -3,6 +3,7 @@ package com.main.desgins.elevator.strategy;
 import com.main.desgins.elevator.models.ElevatorDirection;
 
 public class ExternalButton {
+
     private final ExternalDispatcher externalDispatcher;
 
     public ExternalButton(ExternalDispatcher externalDispatcher) {
