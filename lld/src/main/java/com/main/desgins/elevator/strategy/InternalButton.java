@@ -7,9 +7,8 @@ import lombok.AllArgsConstructor;
 public class InternalButton {
 
     private final ElevatorManager manager;
-    private final InternalDispatcher internalDispatcher;
 
     public void pressButton(int floor) {
-        internalDispatcher.submitInternalRequest(floor, manager);
+        InternalDispatcher.submitInternalRequest(floor, manager);
     }
 }

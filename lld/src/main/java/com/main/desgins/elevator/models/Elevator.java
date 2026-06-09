@@ -18,6 +18,7 @@ public class Elevator {
 
     public Elevator(int id) {
         this.id = id;
+        this.direction=ElevatorDirection.IDLE;
         this.currentFloor = new Floor(0,null);
         this.nextStoppage = new Floor(-1,null);
         door = new Door();

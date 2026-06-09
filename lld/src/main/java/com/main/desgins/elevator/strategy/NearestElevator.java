@@ -6,6 +6,7 @@ import com.main.desgins.elevator.models.ElevatorDirection;
 import java.util.List;
 
 public class NearestElevator implements ElevationSelectionStrategy {
+
     @Override
     public ElevatorManager selectElevator(List<ElevatorManager> managers, int requestFloor, ElevatorDirection elevatorDirection) {
         ElevatorManager elevatorManager = null;
@@ -17,19 +18,19 @@ public class NearestElevator implements ElevationSelectionStrategy {
             int nextFloor = manager.getElevator().nextStoppage.getFloorNumber();
 
             boolean isSameDirectionAndValid = manager.getElevator().getDirection() == elevatorDirection &&
-                    ((elevatorDirection == ElevatorDirection.UP && nextFloor<= requestFloor)
+                    ((elevatorDirection == ElevatorDirection.UP && nextFloor <= requestFloor)
                             || (elevatorDirection == ElevatorDirection.DOWN && nextFloor >= requestFloor));
 
             int dist = Math.abs(nextFloor - requestFloor);
-            if(isSameDirectionAndValid && dist < minDistance) {
-              minDistance = dist;
-              elevatorManager = manager;
+            if (isSameDirectionAndValid && dist < minDistance) {
+                minDistance = dist;
+                elevatorManager = manager;
             }
         }
         // fallback : if not able to choose pick the idle one
-        if(elevatorManager == null) {
-            for(ElevatorManager manager : managers) {
-                if(manager.getElevator().direction.equals(ElevatorDirection.IDLE)) {
+        if (elevatorManager == null) {
+            for (ElevatorManager manager : managers) {
+                if (manager.getElevator().direction.equals(ElevatorDirection.IDLE)) {
                     elevatorManager = manager;
                     break;
                 }

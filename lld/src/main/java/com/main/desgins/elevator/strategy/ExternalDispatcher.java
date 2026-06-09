@@ -12,7 +12,9 @@ public class ExternalDispatcher {
     private final ElevatorScheduler elevatorScheduler;
 
     public void submitExternalRequest(int floor, ElevatorDirection direction) {
+        // lift call , will get the lift and go inside
         ElevatorManager manager = elevatorScheduler.assignElevator(floor, direction);
+        // this is the lift submitting the req to go on a certain floor
         manager.submitRequest(floor);
     }
 }
