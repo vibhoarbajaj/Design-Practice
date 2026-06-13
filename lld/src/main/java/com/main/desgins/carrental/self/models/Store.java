@@ -22,7 +22,7 @@ public class Store {
 
     public RentalVehicle selectRentalVehicle(RentalVehicleType vehicleType) {
         for (RentalVehicle rentalVehicle : rentalVehicleList) {
-            if (rentalVehicle.getRentalVehicleType().equals(vehicleType)) {
+            if (rentalVehicle.getRentalVehicleType().equals(vehicleType) && rentalVehicle.isFree()) {
                 return rentalVehicle;
             }
         }
