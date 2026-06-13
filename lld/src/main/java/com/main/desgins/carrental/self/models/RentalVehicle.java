@@ -9,4 +9,8 @@ public class RentalVehicle {
     private RentalVehicleType rentalVehicleType;
     private int cost;
     private boolean isFree = true;
+
+    public void reserveVehicle() {
+        isFree = false;
+    }
 }
