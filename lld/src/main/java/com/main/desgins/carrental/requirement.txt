@@ -1,0 +1,22 @@
+-- user comes to car rental system
+-- select a particular store based on the location
+-- search for vehicles based on the vehicle type ("four wheeler", "two wheeler") and its availability
+-- reserve the selected vehicle
+   1. should handle the concurrency , as 2 users try to reserve the same vehicle for the same time
+-- start the trip
+-- submit the vehicle
+-- bill is generated against the reservation
+   1. we can have multiple bill strategies for generating the bill , like daily bill or hourly bill
+-- payment is made against the bill
+   1. we can have multiple payment strategies
+
+
+Objects are
+-- Vehicle(id , type , isReserved , cost , number)
+-- Bill
+-- Payment
+-- Store
+-- User
+-- Reservation
+
+User - > store(has multiple vehicles) -> reservation based on algo(find the available vehicles) -> user start journey -> return back -> bill generated -> payment received
