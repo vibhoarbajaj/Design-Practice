@@ -22,14 +22,17 @@ public class Reservation {
 
     public Ticket reserveCar(RentalVehicleType vehicleType, User user) {
         Store store = storeSelectionStrategy.selectStore(vehicleType, user, stores);
-        RentalVehicle rentalVehicle = store.selectRentalVehicle(vehicleType);
         lock.lock();
+        RentalVehicle rentalVehicle;
         try {
+            rentalVehicle = store.selectRentalVehicle(vehicleType);
             rentalVehicle.reserveVehicle();
+            user.setRentalVehicle(rentalVehicle);
+
         } finally {
             lock.unlock();
+
         }
-        user.setRentalVehicle(rentalVehicle);
         this.startTime = LocalDateTime.now();
         user.setReservations(this);
         return new Ticket(UUID.randomUUID(), rentalVehicle, user);
