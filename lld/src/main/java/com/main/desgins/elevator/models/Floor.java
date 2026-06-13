@@ -15,10 +15,10 @@ public class Floor {
         this.upButton= new ExternalButton(dispatcher);
         this.downButton= new ExternalButton(dispatcher);
     }
-    public void pressDownButton(int floor) {
-        downButton.pressButton(floor,ElevatorDirection.DOWN);
+    public void pressDownButton() {
+        downButton.pressButton(this.getFloorNumber(),ElevatorDirection.DOWN);
     }
-    public void pressUpButton(int floor) {
-        upButton.pressButton(floor,ElevatorDirection.UP);
+    public void pressUpButton() {
+        upButton.pressButton(this.getFloorNumber(),ElevatorDirection.UP);
     }
 }
