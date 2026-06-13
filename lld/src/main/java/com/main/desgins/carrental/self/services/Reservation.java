@@ -7,6 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.locks.ReentrantLock;
 
 @AllArgsConstructor
 @Data
@@ -15,13 +16,19 @@ public class Reservation {
     private final List<Store> stores;
     private final StoreSelectionStrategy storeSelectionStrategy;
     private final BillStrategies billStrategies;
+    private final ReentrantLock lock = new ReentrantLock(true);
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
     public Ticket reserveCar(RentalVehicleType vehicleType, User user) {
         Store store = storeSelectionStrategy.selectStore(vehicleType, user, stores);
         RentalVehicle rentalVehicle = store.selectRentalVehicle(vehicleType);
-        rentalVehicle.reserveVehicle();
+        lock.lock();
+        try {
+            rentalVehicle.reserveVehicle();
+        } finally {
+            lock.unlock();
+        }
         user.setRentalVehicle(rentalVehicle);
         this.startTime = LocalDateTime.now();
         user.setReservations(this);
@@ -36,7 +43,12 @@ public class Reservation {
         if (isPaid) {
             System.out.println("congratulations the bill is paid for car " + ticket.getVehicle().getVehicleNumber() + " and user " + ticket.getUser().getUsername());
             RentalVehicle vehicle = ticket.getVehicle();
-            vehicle.unreserveVehicle();
+            lock.lock();
+            try {
+                vehicle.unreserveVehicle();
+            } finally {
+                lock.unlock();
+            }
         } else {
             throw new RuntimeException("bill not paid wash the dishes");
         }
