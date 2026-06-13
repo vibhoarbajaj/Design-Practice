@@ -4,11 +4,13 @@ import com.main.desgins.carrental.self.models.RentalVehicleType;
 import com.main.desgins.carrental.self.models.Store;
 import com.main.desgins.carrental.self.models.User;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
+@Data
 public class Reservation {
 
     private final List<Store> stores;

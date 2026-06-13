@@ -5,6 +5,7 @@ import com.main.desgins.carrental.self.models.RentalPayment;
 public class CashRentalPayment implements RentalPayment {
     @Override
     public boolean pay(int cost) {
-        return false;
+        System.out.println("Paying " + cost + " through cash");
+        return true;
     }
 }
