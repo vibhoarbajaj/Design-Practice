@@ -14,6 +14,7 @@ public class Reservation {
 
     private final List<Store> stores;
     private final StoreSelectionStrategy storeSelectionStrategy;
+    private final BillStrategies billStrategies;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
@@ -27,7 +28,17 @@ public class Reservation {
         return new Ticket(UUID.randomUUID(), rentalVehicle, user);
     }
 
-    public void returnCar(Ticket ticket) {
-
+    public void returnCar(Ticket ticket, RentalPayment rentalPayment) {
+        this.endTime = LocalDateTime.now(); // this is critical as per the code
+        User user = ticket.getUser();
+        int billCost = billStrategies.getBillForVehicle(ticket.getVehicle(), user);
+        boolean isPaid = rentalPayment.pay(billCost);
+        if (isPaid) {
+            System.out.println("congratulations the bill is paid for car " + ticket.getVehicle().getVehicleNumber() + " and user " + ticket.getUser().getUsername());
+            RentalVehicle vehicle = ticket.getVehicle();
+            vehicle.unreserveVehicle();
+        } else {
+            throw new RuntimeException("bill not paid wash the dishes");
+        }
     }
 }

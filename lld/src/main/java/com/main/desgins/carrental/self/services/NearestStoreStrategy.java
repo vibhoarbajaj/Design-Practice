@@ -15,7 +15,7 @@ public class NearestStoreStrategy implements StoreSelectionStrategy {
         for (Store store : stores) {
             int newd = (store.getLocation().getX() * store.getLocation().getX() + store.getLocation().getY() * store.getLocation().getY())
                     - (user.getLocation().getX() * user.getLocation().getX() + user.getLocation().getY() * user.getLocation().getY());
-            if (newd < distance) {
+            if (newd < distance && store.hasRentalVehicle(vehicleType)) {
                 distance = newd;
                 nearestStore = store;
             }

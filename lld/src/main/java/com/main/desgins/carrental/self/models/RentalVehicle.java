@@ -13,4 +13,7 @@ public class RentalVehicle {
     public void reserveVehicle() {
         isFree = false;
     }
+    public void unreserveVehicle() {
+        isFree = true;
+    }
 }
