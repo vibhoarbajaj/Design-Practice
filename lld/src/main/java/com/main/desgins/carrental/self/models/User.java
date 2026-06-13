@@ -4,7 +4,6 @@ import com.main.desgins.carrental.self.services.Reservation;
 import lombok.Data;
 
 import javax.xml.stream.Location;
-import java.util.List;
 
 @Data
 public class User {
@@ -12,5 +11,5 @@ public class User {
     private RentalVehicle rentalVehicle;
     private Bill bill;
     private Location location;
-    private List<Reservation> reservations;
+    private Reservation reservations;
 }
