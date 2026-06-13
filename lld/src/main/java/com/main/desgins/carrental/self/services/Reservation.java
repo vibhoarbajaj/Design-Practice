@@ -1,10 +1,11 @@
 package com.main.desgins.carrental.self.services;
 
+import com.main.desgins.carrental.self.models.RentalVehicleType;
 import com.main.desgins.carrental.self.models.Store;
 import com.main.desgins.carrental.self.models.User;
-import com.main.desgins.parkinglot.entities.vehicle.VehicleType;
 import lombok.AllArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -12,9 +13,11 @@ public class Reservation {
 
     private final List<Store> stores;
     private final StoreSelectionStrategy storeSelectionStrategy;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 
-    public void reserveCar(VehicleType vehicleType, User user) {
-        Store store =  storeSelectionStrategy.selectStore(vehicleType, user, stores);
+    public void reserveCar(RentalVehicleType vehicleType, User user) {
+        Store store = storeSelectionStrategy.selectStore(vehicleType, user, stores);
 
     }
 }
