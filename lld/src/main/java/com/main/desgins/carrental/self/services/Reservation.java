@@ -1,14 +1,12 @@
 package com.main.desgins.carrental.self.services;
 
-import com.main.desgins.carrental.self.models.RentalVehicleType;
-import com.main.desgins.carrental.self.models.Store;
-import com.main.desgins.carrental.self.models.Ticket;
-import com.main.desgins.carrental.self.models.User;
+import com.main.desgins.carrental.self.models.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Data
@@ -21,8 +19,14 @@ public class Reservation {
 
     public Ticket reserveCar(RentalVehicleType vehicleType, User user) {
         Store store = storeSelectionStrategy.selectStore(vehicleType, user, stores);
-        return null;
+        RentalVehicle rentalVehicle = store.selectRentalVehicle(vehicleType);
+        rentalVehicle.reserveVehicle();
+        user.setRentalVehicle(rentalVehicle);
+        this.startTime = LocalDateTime.now();
+        user.setReservations(this);
+        return new Ticket(UUID.randomUUID(), rentalVehicle, user);
     }
+
     public void returnCar(Ticket ticket) {
 
     }

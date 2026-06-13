@@ -21,6 +21,11 @@ public class Store {
     }
 
     public RentalVehicle selectRentalVehicle(RentalVehicleType vehicleType) {
+        for (RentalVehicle rentalVehicle : rentalVehicleList) {
+            if (rentalVehicle.getRentalVehicleType().equals(vehicleType)) {
+                return rentalVehicle;
+            }
+        }
         return null;
     }
 
