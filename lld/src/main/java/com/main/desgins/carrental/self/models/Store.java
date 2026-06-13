@@ -3,7 +3,6 @@ package com.main.desgins.carrental.self.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.xml.stream.Location;
 import java.util.List;
 
 @Data

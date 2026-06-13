@@ -10,6 +10,10 @@ public class NearestStoreStrategy implements StoreSelectionStrategy {
 
     @Override
     public Store selectStore(RentalVehicleType vehicleType, User user, List<Store> stores) {
+        int distance = Integer.MAX_VALUE;
+        for(Store store : stores) {
+            int newd = store.getLocation().getX();
+        }
         return null;
     }
 }

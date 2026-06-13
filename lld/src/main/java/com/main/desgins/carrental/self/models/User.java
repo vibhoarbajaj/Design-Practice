@@ -3,7 +3,7 @@ package com.main.desgins.carrental.self.models;
 import com.main.desgins.carrental.self.services.Reservation;
 import lombok.Data;
 
-import javax.xml.stream.Location;
+
 
 @Data
 public class User {
