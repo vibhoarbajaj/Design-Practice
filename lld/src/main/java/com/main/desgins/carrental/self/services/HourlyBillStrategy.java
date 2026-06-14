@@ -10,7 +10,7 @@ public class HourlyBillStrategy implements BillStrategies {
     @Override
     public int getBillForVehicle(RentalVehicle vehicle, User user) {
         LocalDateTime startTime = user.getReservations().getStartTime();
-        LocalDateTime endTime = user.getReservations().getEndTime();
+        LocalDateTime endTime = user.getReservations().getEndTime().plusHours(3);
 
         long hours = Duration.between(startTime, endTime).toHours();
 
