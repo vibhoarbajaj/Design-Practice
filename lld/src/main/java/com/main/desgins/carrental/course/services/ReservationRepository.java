@@ -6,7 +6,7 @@ import com.main.desgins.carrental.course.models.Reservation;
 import java.util.Map;
 
 public class ReservationRepository {
-    Map<Integer, Reservation> reservations;
+    private Map<Integer, Reservation> reservations;
 
     public Reservation save(Reservation reservation) {
         return reservations.put(reservation.getReservationId(), reservation);
