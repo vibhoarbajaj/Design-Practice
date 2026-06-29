@@ -3,7 +3,7 @@ package com.main.desgins.carrental.course.services;
 import com.main.desgins.carrental.course.models.Reservation;
 import com.main.desgins.carrental.course.models.ReservationStatus;
 import com.main.desgins.carrental.course.models.ReservationType;
-import com.main.desgins.carrental.self.models.User;
+import com.main.desgins.carrental.course.models.User;
 import lombok.AllArgsConstructor;
 
 import java.time.ZoneId;
@@ -23,7 +23,7 @@ public class ReservationManager {
         if (!reserved) {
             throw new RuntimeException("Cannot create reservation");
         }
-        Reservation reservation = new Reservation(reservationId, vehicleId, user.getId(), from, to, type, ReservationStatus.IN_USE);
+        Reservation reservation = new Reservation(reservationId, vehicleId, user.getUserId(), from, to, type, ReservationStatus.IN_USE);
         reservationRepository.save(reservation);
         return reservation;
     }
