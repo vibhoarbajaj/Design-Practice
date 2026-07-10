@@ -1,0 +1,18 @@
+-- 2 player game (make it extendable)
+-- each player take turn in moving their placement , on a 10x10 boar(0-99) by rolling the dice from (0-99)(extendable)
+-- dice (yeilds random number between 1-6) which tells the player to move x number of cells
+-- ladder -  helps jump
+-- snake - helps step down
+
+no of dice , board size , players extendable
+num of place of snake and ladder is dynamic during the game initialization
+any player reaches the end point exactly ends the game
+
+
+Objects
+1.Person
+2.Board
+2.5 cell
+3.Dice
+4.Obstacle(snake , ladder)
+
