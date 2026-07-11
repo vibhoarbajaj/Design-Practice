@@ -2,25 +2,58 @@ package com.main.desgins.snakenladder.self.service;
 
 import com.main.desgins.snakenladder.self.models.Cell;
 import com.main.desgins.snakenladder.self.models.Obstacle;
+import com.main.desgins.snakenladder.self.models.ObstacleType;
+import com.main.desgins.snakenladder.self.models.SLPlayer;
 
 import java.util.List;
 
 public class Board {
     int size;
     Cell[][] cells;
+
     public Board(int size, List<Obstacle> obstacles) {
         this.size = size;
         this.cells = new Cell[size][size];
-        for(int i = 0; i < size; i++){
-            for(int j = 0; j < size; j++){
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                boolean isFilled = false;
                 for (Obstacle obstacle : obstacles) {
-                    if (obstacle.getRowStart() == i && obstacle.getColStart() == j) {
-                        cells[i][j] = new Cell(obstacle.getRowStart(), obstacle.getColStart(), true, obstacle);
-                    } else {
-                        cells[i][j] = new Cell(i, j, false, null);
+                    if (obstacle.getRowStart() == i && obstacle.getColStart() == j && obstacle.getType().equals(ObstacleType.SNAKE)) {
+                        cells[i][j] = new Cell(i,j, true, obstacle);
+                        isFilled = true;
+                        break;
                     }
+                    else  if (obstacle.getRowEnd() == i && obstacle.getColEnd() == j && obstacle.getType().equals(ObstacleType.LADDER)) {
+                        cells[i][j] = new Cell(i,j, true, obstacle);
+                        isFilled = true;
+                        break;
+                    }
+                }
+                if (!isFilled) {
+                    cells[i][j] = new Cell(i, j, false, null);
                 }
             }
         }
+    }
+
+    public boolean movePlayer(int val , SLPlayer player) {
+        int newRow  = player.getRow() +  val/10;
+        int newCol  = player.getCol() +  val%10;
+
+        Cell cell = cells[newRow][newCol];
+        if(cell.isHasObstacle()) {
+            Obstacle obstacle = cell.getObstacle();
+            if(cell.getObstacle().getType().equals(ObstacleType.SNAKE)){
+                newRow = obstacle.getRowEnd(); // this is where the snake will take u down
+                newCol = obstacle.getColEnd();
+            }
+            else{
+                newRow = obstacle.getRowStart(); // ladder will take u up , so the start of ladder is higher
+                newCol = obstacle.getColStart();
+            }
+        }
+        player.setRow(newRow);
+        player.setCol(newCol);
+        return newRow == cells.length - 1 && newCol == cells[0].length - 1;
     }
 }
