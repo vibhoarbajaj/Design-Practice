@@ -2,7 +2,6 @@ package com.main.desgins.snakenladder.self.service;
 
 import com.main.desgins.snakenladder.self.models.Cell;
 import com.main.desgins.snakenladder.self.models.Obstacle;
-import com.main.desgins.snakenladder.self.models.ObstacleType;
 import com.main.desgins.snakenladder.self.models.SLPlayer;
 
 import java.util.List;
@@ -18,13 +17,8 @@ public class Board {
             for (int j = 0; j < size; j++) {
                 boolean isFilled = false;
                 for (Obstacle obstacle : obstacles) {
-                    if (obstacle.getRowStart() == i && obstacle.getColStart() == j && obstacle.getType().equals(ObstacleType.SNAKE)) {
-                        cells[i][j] = new Cell(i,j, true, obstacle);
-                        isFilled = true;
-                        break;
-                    }
-                    else  if (obstacle.getRowEnd() == i && obstacle.getColEnd() == j && obstacle.getType().equals(ObstacleType.LADDER)) {
-                        cells[i][j] = new Cell(i,j, true, obstacle);
+                    if (obstacle.getRowStart() == i && obstacle.getColStart() == j) {
+                        cells[i][j] = new Cell(i, j, true, obstacle);
                         isFilled = true;
                         break;
                     }
@@ -36,7 +30,7 @@ public class Board {
         }
     }
 
-    public boolean movePlayer(int val , SLPlayer player) {
+    public boolean movePlayer(int val, SLPlayer player) {
         int currentRow = player.getRow();
         int currentColInRow = (currentRow % 2 == 0) ? player.getCol() : size - 1 - player.getCol();
         int currentPos = currentRow * size + currentColInRow;
@@ -51,16 +45,11 @@ public class Board {
         int newCol = (newRow % 2 == 0) ? colInRow : size - 1 - colInRow;
 
         Cell cell = cells[newRow][newCol];
-        if(cell.isHasObstacle()) {
+        if (cell.isHasObstacle()) {
+            System.out.println("player " + player + " move obstacle");
             Obstacle obstacle = cell.getObstacle();
-            if(cell.getObstacle().getType().equals(ObstacleType.SNAKE)){
-                newRow = obstacle.getRowEnd(); // this is where the snake will take u down
-                newCol = obstacle.getColEnd();
-            }
-            else{
-                newRow = obstacle.getRowStart(); // ladder will take u up , so the start of ladder is higher
-                newCol = obstacle.getColStart();
-            }
+            newRow = obstacle.getRowEnd();
+            newCol = obstacle.getColEnd();
         }
         player.setRow(newRow);
         player.setCol(newCol);
