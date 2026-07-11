@@ -64,6 +64,6 @@ public class Board {
         }
         player.setRow(newRow);
         player.setCol(newCol);
-        return newRow == cells.length - 1 && newCol == cells[0].length - 1;
+        return newPos == size * size - 1;
     }
 }
