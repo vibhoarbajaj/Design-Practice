@@ -37,8 +37,18 @@ public class Board {
     }
 
     public boolean movePlayer(int val , SLPlayer player) {
-        int newRow  = player.getRow() +  val/10;
-        int newCol  = player.getCol() +  val%10;
+        int currentRow = player.getRow();
+        int currentColInRow = (currentRow % 2 == 0) ? player.getCol() : size - 1 - player.getCol();
+        int currentPos = currentRow * size + currentColInRow;
+
+        int newPos = currentPos + val;
+        if (newPos > size * size - 1) {
+            return false; // overshoot, stay put
+        }
+
+        int newRow = newPos / size;
+        int colInRow = newPos % size;
+        int newCol = (newRow % 2 == 0) ? colInRow : size - 1 - colInRow;
 
         Cell cell = cells[newRow][newCol];
         if(cell.isHasObstacle()) {
